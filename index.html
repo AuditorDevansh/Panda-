@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Panda ❤️</title>
+
+<style>
+body {
+  margin: 0;
+  background: black;
+  color: white;
+  font-family: 'Segoe UI', sans-serif;
+  overflow-x: hidden;
+}
+
+.section {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+.bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(45%);
+  z-index: -1;
+}
+
+.content {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 1s;
+}
+
+.section.active .content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+h1 { font-size: 2.5rem; }
+
+.music-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: rgba(255,255,255,0.2);
+  border: none;
+  padding: 10px;
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+}
+
+.final {
+  background: radial-gradient(circle, #000, #200020);
+}
+
+.heart {
+  font-size: 50px;
+  animation: beat 1s infinite;
+}
+
+@keyframes beat {
+  50% { transform: scale(1.2); }
+}
+</style>
+</head>
+
+<body>
+
+<button class="music-btn" onclick="toggleMusic()">▶ Music</button>
+
+<!-- Embedded Music (Base64 demo - replace if needed) -->
+<audio id="music" loop>
+  <source src="data:audio/mp3;base64,//uQxAAAAAAAAAAAAAAAAAAAA..." type="audio/mpeg">
+</audio>
+
+<!-- SECTION 1 -->
+<section class="section">
+  <img class="bg" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD...">
+  <div class="content">
+    <h1>My Panda 🐼❤️</h1>
+    <p>From the moment you came into this world… you were special.</p>
+  </div>
+</section>
+
+<!-- SECTION 2 -->
+<section class="section">
+  <img class="bg" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD...">
+  <div class="content">
+    <h1>Little Panda 👶</h1>
+    <p>You were always this cute… and still are 😄</p>
+  </div>
+</section>
+
+<!-- SECTION 3 -->
+<section class="section">
+  <img class="bg" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD...">
+  <div class="content">
+    <h1>Growing Beautiful 🌸</h1>
+    <p>Every phase made you more amazing.</p>
+  </div>
+</section>
+
+<!-- SECTION 4 -->
+<section class="section">
+  <img class="bg" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD...">
+  <div class="content">
+    <h1>So Proud of You 🎓</h1>
+    <p>You’ve become everything you once dreamed of.</p>
+  </div>
+</section>
+
+<!-- FINAL -->
+<section class="section final">
+  <div class="content">
+    <h1>Happy Birthday Panda ❤️</h1>
+    <p>
+      From a tiny little angel…  
+      to the love of my life…  
+      I’m lucky to have you.
+    </p>
+    <h2>You are my forever 🐼💫</h2>
+    <div class="heart">❤️</div>
+  </div>
+</section>
+
+<script>
+// Scroll animation
+const sections = document.querySelectorAll(".section");
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("active");
+    }
+  });
+}, { threshold: 0.5 });
+
+sections.forEach(s => observer.observe(s));
+
+// Music
+const music = document.getElementById("music");
+let playing = false;
+
+function toggleMusic() {
+  if (!playing) {
+    music.play();
+    document.querySelector(".music-btn").innerText = "⏸ Pause";
+  } else {
+    music.pause();
+    document.querySelector(".music-btn").innerText = "▶ Music";
+  }
+  playing = !playing;
+}
+
+// Auto scroll
+let auto = true;
+
+function scrollStory() {
+  if (auto) window.scrollBy(0, 1);
+  requestAnimationFrame(scrollStory);
+}
+scrollStory();
+
+window.addEventListener("wheel", () => auto = false);
+window.addEventListener("touchstart", () => auto = false);
+</script>
+
+</body>
+</html>
