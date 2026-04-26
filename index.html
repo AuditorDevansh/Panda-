@@ -1,177 +1,528 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Panda ❤️</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Legend of Panda 🐼 | A Birthday Tale</title>
+    <meta name="description" content="An enchanted journey through memories and wishes">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;900&family=Cormorant+Garamond:wght@300;400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<style>
-body {
-  margin: 0;
-  background: black;
-  color: white;
-  font-family: 'Segoe UI', sans-serif;
-  overflow-x: hidden;
-}
+        :root {
+            --magic-purple: #8B5CF6;
+            --deep-blue: #1E1B4B;
+            --gold: #FCD34D;
+            --rose: #FB7185;
+            --cosmic-blue: #3B82F6;
+            --night: #0F172A;
+        }
 
-.section {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  position: relative;
-}
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background: linear-gradient(to bottom, #0F172A, #1E1B4B, #312E81);
+            color: #F8FAFC;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
 
-.bg {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(45%);
-  z-index: -1;
-}
+        /* Magical Background */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
 
-.content {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: 1s;
-}
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
 
-.section.active .content {
-  opacity: 1;
-  transform: translateY(0);
-}
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); }
+        }
 
-h1 { font-size: 2.5rem; }
+        /* Magical Particles */
+        .magic-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+        }
 
-.music-btn {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  background: rgba(255,255,255,0.2);
-  border: none;
-  padding: 10px;
-  border-radius: 20px;
-  color: white;
-  cursor: pointer;
-}
+        .magic-particle {
+            position: absolute;
+            font-size: 1.5rem;
+            opacity: 0;
+            animation: magicFloat 8s linear infinite;
+            filter: drop-shadow(0 0 10px currentColor);
+        }
 
-.final {
-  background: radial-gradient(circle, #000, #200020);
-}
+        @keyframes magicFloat {
+            0% {
+                opacity: 0;
+                transform: translateY(100vh) rotate(0deg) scale(0);
+            }
+            10% {
+                opacity: 1;
+                transform: translateY(90vh) rotate(45deg) scale(1);
+            }
+            90% {
+                opacity: 1;
+                transform: translateY(-10vh) rotate(315deg) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-20vh) rotate(360deg) scale(0);
+            }
+        }
 
-.heart {
-  font-size: 50px;
-  animation: beat 1s infinite;
-}
+        /* Hero Section - Enchanted Opening */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
 
-@keyframes beat {
-  50% { transform: scale(1.2); }
-}
-</style>
+        .magic-circle {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            opacity: 0.2;
+            animation: rotate 20s linear infinite;
+        }
+
+        .magic-circle:nth-child(2) {
+            width: 500px;
+            height: 500px;
+            animation-duration: 15s;
+            animation-direction: reverse;
+            border-color: var(--magic-purple);
+        }
+
+        .magic-circle:nth-child(3) {
+            width: 400px;
+            height: 400px;
+            animation-duration: 10s;
+            border-color: var(--cosmic-blue);
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        .story-badge {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            color: var(--gold);
+            margin-bottom: 1rem;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 10px var(--gold), 0 0 20px var(--gold); }
+            to { text-shadow: 0 0 20px var(--gold), 0 0 40px var(--gold), 0 0 60px var(--gold); }
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(3rem, 12vw, 8rem);
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--gold), var(--rose), var(--magic-purple), var(--cosmic-blue));
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            animation: gradientShift 4s ease infinite, fadeInMagic 1.5s ease-out;
+            letter-spacing: 0.1em;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes fadeInMagic {
+            from {
+                opacity: 0;
+                transform: translateY(50px) scale(0.8);
+                filter: blur(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+                filter: blur(0);
+            }
+        }
+
+        .hero h2 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.5rem, 7vw, 5rem);
+            color: #F8FAFC;
+            margin-bottom: 2rem;
+            animation: fadeInMagic 1.8s ease-out;
+            text-shadow: 0 0 30px rgba(251, 113, 133, 0.5);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            font-weight: 300;
+            letter-spacing: 0.3em;
+            opacity: 0.9;
+            animation: fadeInMagic 2.1s ease-out;
+            font-style: italic;
+        }
+
+        .scroll-magic {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1rem;
+            opacity: 0.8;
+            animation: float 3s ease-in-out infinite;
+            letter-spacing: 0.2em;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-15px); }
+        }
+
+        /* Chapter Sections */
+        .chapter {
+            min-height: 100vh;
+            padding: 6rem 2rem;
+            position: relative;
+            z-index: 5;
+        }
+
+        .chapter-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .chapter-number {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .chapter-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 600;
+            background: linear-gradient(135deg, var(--cosmic-blue), var(--magic-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+        }
+
+        .chapter-intro {
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            line-height: 2;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            text-align: center;
+            opacity: 0.95;
+            font-style: italic;
+            padding: 0 1rem;
+        }
+
+        /* Story Card (Photo + Long Message) */
+        .story-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 6rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .story-card {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(59, 130, 246, 0.1));
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            overflow: hidden;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            animation: fadeInUp 0.8s ease-out backwards;
+        }
+
+        .story-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 30px 80px rgba(139, 92, 246, 0.4);
+            border-color: rgba(252, 211, 77, 0.3);
+        }
+
+        .story-image-container {
+            position: relative;
+            overflow: hidden;
+            height: 500px;
+        }
+
+        .story-image-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent 50%, rgba(15, 23, 42, 0.8));
+            z-index: 1;
+        }
+
+        .story-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+
+        .story-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .story-content {
+            padding: 3rem;
+        }
+
+        .story-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .story-text {
+            font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+            line-height: 2.2;
+            color: #E2E8F0;
+            margin-bottom: 1.5rem;
+            text-align: justify;
+            text-indent: 2rem;
+        }
+
+        .story-text:first-of-type::first-letter {
+            font-size: 4rem;
+            font-family: 'Cinzel', serif;
+            float: left;
+            line-height: 3rem;
+            margin: 0.2rem 0.5rem 0 0;
+            color: var(--gold);
+        }
+
+        .story-quote {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            text-align: center;
+            color: var(--rose);
+            margin: 2rem 0;
+            padding: 1rem;
+            border-left: 3px solid var(--gold);
+            border-right: 3px solid var(--gold);
+            font-style: italic;
+        }
+
+        /* Final Message - The Blessing */
+        .blessing-section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 4rem 2rem;
+            position: relative;
+            text-align: center;
+        }
+
+        .blessing-container {
+            max-width: 900px;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(251, 113, 133, 0.2));
+            backdrop-filter: blur(20px);
+            border-radius: 40px;
+            padding: 4rem 3rem;
+            border: 3px solid rgba(252, 211, 77, 0.3);
+            box-shadow: 0 30px 100px rgba(139, 92, 246, 0.4);
+            animation: floatSlow 6s ease-in-out infinite;
+        }
+
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .blessing-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            color: var(--gold);
+            margin-bottom: 2rem;
+            text-shadow: 0 0 20px rgba(252, 211, 77, 0.5);
+        }
+
+        .blessing-text {
+            font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+            line-height: 2.5;
+            margin-bottom: 2rem;
+            color: #F1F5F9;
+        }
+
+        .blessing-signature {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--rose);
+            margin-top: 3rem;
+        }
+
+        .magic-heart {
+            display: inline-block;
+            font-size: 3rem;
+            animation: heartMagic 2s ease-in-out infinite;
+            filter: drop-shadow(0 0 20px var(--rose));
+        }
+
+        @keyframes heartMagic {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            25% { transform: scale(1.3) rotate(-10deg); }
+            50% { transform: scale(1) rotate(0deg); }
+            75% { transform: scale(1.3) rotate(10deg); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .story-image-container {
+                height: 350px;
+            }
+
+            .story-content {
+                padding: 2rem 1.5rem;
+            }
+
+            .blessing-container {
+                padding: 2.5rem 1.5rem;
+            }
+
+            .chapter {
+                padding: 4rem 1.5rem;
+            }
+
+            .magic-circle {
+                width: 300px;
+                height: 300px;
+            }
+
+            .magic-circle:nth-child(2) {
+                width: 250px;
+                height: 250px;
+            }
+
+            .magic-circle:nth-child(3) {
+                width: 200px;
+                height: 200px;
+            }
+        }
+
+        /* Scroll Animation Delays */
+        .story-card:nth-child(1) { animation-delay: 0.0s; }
+        .story-card:nth-child(2) { animation-delay: 0.2s; }
+        .story-card:nth-child(3) { animation-delay: 0.4s; }
+        .story-card:nth-child(4) { animation-delay: 0.6000000000000001s; }
+        .story-card:nth-child(5) { animation-delay: 0.8s; }
+        .story-card:nth-child(6) { animation-delay: 1.0s; }
+        .story-card:nth-child(7) { animation-delay: 1.2000000000000002s; }
+        .story-card:nth-child(8) { animation-delay: 1.4000000000000001s; }
+        .story-card:nth-child(9) { animation-delay: 1.6s; }
+        .story-card:nth-child(10) { animation-delay: 1.8s; }
+        .story-card:nth-child(11) { animation-delay: 2.0s; }
+        .story-card:nth-child(12) { animation-delay: 2.2s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(60px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
-
 <body>
+    <!-- Starry Background -->
+    <div class="stars" id="stars"></div>
 
-<button class="music-btn" onclick="toggleMusic()">▶ Music</button>
+    <!-- Magic Particles -->
+    <div class="magic-particles" id="magicParticles"></div>
 
-<!-- Embedded Music (Base64 demo - replace if needed) -->
-<audio id="music" loop>
-  <source src="data:audio/mp3;base64,//uQxAAAAAAAAAAAAAAAAAAAA..." type="audio/mpeg">
-</audio>
+    <!-- Hero - The Legend Begins -->
+    <section class="hero">
+        <div class="magic-circle"></div>
+        <div class="magic-circle"></div>
+        <div class="magic-circle"></div>
+        
+        <div class="hero-content">
+            <div class="story-badge">Once Upon a Time...</div>
+            <h1>The Legend of</h1>
+            <h2>Panda 🐼</h2>
+            <p class="hero-subtitle">A TALE OF MAGIC & MEMORIES</p>
+        </div>
+        
+        <div class="scroll-magic">↓ BEGIN THE JOURNEY ↓</div>
+    </section>
 
-<!-- SECTION 1 -->
-<section class="section">
-  <img class="bg" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD...">
-  <div class="content">
-    <h1>My Panda 🐼❤️</h1>
-    <p>From the moment you came into this world… you were special.</p>
-  </div>
-</section>
+    <!-- Chapter I: The Origin -->
+    <section class="chapter">
+        <div class="chapter-header">
+            <div class="chapter-number">Chapter I</div>
+            <h2 class="chapter-title">The Origins of Light</h2>
+            <p class="chapter-intro">
+                In a realm where stardust meets earthly wonder, a soul was born—destined to bring joy, 
+                warmth, and magic to all who would cross their path. This is where the legend began, 
+                where every smile held the promise of tomorrow, and every moment was the first page 
+                of an extraordinary story yet to be written.
+            </p>
+        </div>
 
-<!-- SECTION 2 -->
-<section class="section">
-  <img class="bg" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD...">
-  <div class="content">
-    <h1>Little Panda 👶</h1>
-    <p>You were always this cute… and still are 😄</p>
-  </div>
-</section>
+        <div class="story-grid">
 
-<!-- SECTION 3 -->
-<section class="section">
-  <img class="bg" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD...">
-  <div class="content">
-    <h1>Growing Beautiful 🌸</h1>
-    <p>Every phase made you more amazing.</p>
-  </div>
-</section>
-
-<!-- SECTION 4 -->
-<section class="section">
-  <img class="bg" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD...">
-  <div class="content">
-    <h1>So Proud of You 🎓</h1>
-    <p>You’ve become everything you once dreamed of.</p>
-  </div>
-</section>
-
-<!-- FINAL -->
-<section class="section final">
-  <div class="content">
-    <h1>Happy Birthday Panda ❤️</h1>
-    <p>
-      From a tiny little angel…  
-      to the love of my life…  
-      I’m lucky to have you.
-    </p>
-    <h2>You are my forever 🐼💫</h2>
-    <div class="heart">❤️</div>
-  </div>
-</section>
-
-<script>
-// Scroll animation
-const sections = document.querySelectorAll(".section");
-
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("active");
-    }
-  });
-}, { threshold: 0.5 });
-
-sections.forEach(s => observer.observe(s));
-
-// Music
-const music = document.getElementById("music");
-let playing = false;
-
-function toggleMusic() {
-  if (!playing) {
-    music.play();
-    document.querySelector(".music-btn").innerText = "⏸ Pause";
-  } else {
-    music.pause();
-    document.querySelector(".music-btn").innerText = "▶ Music";
-  }
-  playing = !playing;
-}
-
-// Auto scroll
-let auto = true;
-
-function scrollStory() {
-  if (auto) window.scrollBy(0, 1);
-  requestAnimationFrame(scrollStory);
-}
-scrollStory();
-
-window.addEventListener("wheel", () => auto = false);
-window.addEventListener("touchstart", () => auto = false);
-</script>
-
-</body>
-</html>
+            <div class="story-card">
+                <div class="story-image-container">
+                    <img src="data:image/jpeg;base64,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
